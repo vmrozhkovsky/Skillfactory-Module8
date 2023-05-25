@@ -20,23 +20,20 @@ static void ReadData(out string DirPathString, out bool YesOrNo)
         Checks check = new Checks();
 
         Console.WriteLine("Введите полный путь к папке для расчета размера:");
-        string DirPath = Console.ReadLine();
-        while (check.DirNotExist(DirPath))
+        DirPathString = Console.ReadLine();
+        while (check.DirNotExist(DirPathString))
         {
             Console.WriteLine("Указанная папка не существует! Введите верный путь к папке:");
-            DirPath = Console.ReadLine();
+            DirPathString = Console.ReadLine();
         }
-        DirPathString = DirPath;
 
         Console.WriteLine("Будет произведен расчет размера всех файлов и папок в {0}.", DirPathString);
         Console.WriteLine("Вы согласны? (y/n)");
         string YesNo = Console.ReadLine();
-        bool yesOrNo;
-        while (check.YesNoNotExist(YesNo, out yesOrNo))
+        while (check.YesNoNotExist(YesNo, out YesOrNo))
         {
             Console.WriteLine("Неверный формат ответа. Выберите y или n!");
             YesNo = Console.ReadLine();
         }
-        YesOrNo = yesOrNo;
 }
 

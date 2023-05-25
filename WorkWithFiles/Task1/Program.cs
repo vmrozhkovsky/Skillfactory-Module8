@@ -25,33 +25,28 @@ static void ReadData(out string DirPathString, out double MinutesDouble, out boo
         Checks check = new Checks();
 
         Console.WriteLine("Введите полный путь к папке для очистки:");
-        string DirPath = Console.ReadLine();
-        while (check.DirNotExist(DirPath))
+        DirPathString = Console.ReadLine();
+        while (check.DirNotExist(DirPathString))
         {
             Console.WriteLine("Указанная папка не существует! Введите верный путь к папке:");
-            DirPath = Console.ReadLine();
+            DirPathString = Console.ReadLine();
         }
-        DirPathString = DirPath;
 
         Console.WriteLine("Введите время изменения файлов и папок в минутах:");
         string Minutes = Console.ReadLine();
-        double minutesDouble;
-        while (check.MinutesNotExist(Minutes, out minutesDouble))
+        while (check.MinutesNotExist(Minutes, out MinutesDouble))
         {
             Console.WriteLine("Неверный формат числа или число равно нулю! Введите верное число:");
             Minutes = Console.ReadLine();
         }
-        MinutesDouble = minutesDouble;
 
         Console.WriteLine("ВНИМАНИЕ!!! Все файлы и папки в папке {0}, которые не изменялись в течении {1} минут будут удалены!", DirPathString, MinutesDouble.ToString());
         Console.WriteLine("Вы согласны? (y/n)");
         string YesNo = Console.ReadLine();
-        bool yesOrNo;
-        while (check.YesNoNotExist(YesNo, out yesOrNo))
+        while (check.YesNoNotExist(YesNo, out YesOrNo))
         {
             Console.WriteLine("Неверный формат ответа. Выберите y или n!");
             YesNo = Console.ReadLine();
         }
-        YesOrNo = yesOrNo;
 }
 
